@@ -17,7 +17,7 @@ const { form, gallery, btnSearch } = refs;
 
 let query = '';
 let page = 1;
-// let marcupArr = [];
+let marcupArr = [];
 form.addEventListener('submit', onSubmit);
 async function onSubmit(e) {
   e.preventDefault();
