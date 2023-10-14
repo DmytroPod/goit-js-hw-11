@@ -1,0 +1,86 @@
+/* style.css */
+
+/* Стилі для сторінки загальні */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #333; /* Темно-сірий колір тла */
+  margin: 0;
+  padding: 0;
+}
+
+/* Стилі для форми пошуку */
+.search-form {
+  text-align: center;
+  padding: 20px;
+}
+
+.search-form input[type='text'] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 60%;
+  max-width: 400px;
+  background-color: #444; /* Темно-сірий колір поля для введення тексту */
+  color: white;
+}
+
+.search-form button[type='submit'] {
+  padding: 10px 20px;
+  background-color: #0099cc; /* Блакитний колір кнопки */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-form button[type='submit']:hover {
+  background-color: #0077aa; /* Темніший блакитний колір при наведенні */
+}
+
+/* Стилі для галереї картинок */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  background-color: #333;
+  padding: 20px;
+}
+
+.gallery-item {
+  flex: 0 0 calc(33.33% - 20px);
+  border: 1px solid #666;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #444;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column; /* Змінюємо напрямок контейнера на колонку */
+}
+
+.image-container {
+  background-color: #444;
+  padding: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+}
+
+.info {
+  background-color: #445c64;
+  color: white;
+  padding: 10px;
+  flex-grow: 1; /* Забезпечує розтягнення інформації на вільному просторі */
+}
+
+.info-item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}

@@ -1,4 +1,4 @@
-import Notiflix, { Loading } from 'notiflix';
+import Notiflix from 'notiflix';
 
 // Описаний в документації
 import SimpleLightbox from 'simplelightbox';
@@ -13,25 +13,27 @@ const options = {
   rootMargin: '200px', // відступи від кордонів viewport
   threshold: 1, // коли хоча б половина цільового елемента видима
 };
-const { form, gallery } = refs;
+const { form, gallery, btnSearch } = refs;
 
-let searchQuery = '';
+let query = '';
 let page = 1;
-
+let marcupArr = [];
 form.addEventListener('submit', onSubmit);
 async function onSubmit(e) {
   e.preventDefault();
-  searchQuery = e.currentTarget.elements.searchQuery.value;
+  query = e.currentTarget.elements.searchQuery.value;
+  console.log(query);
   page = 1;
 
-  if (!searchQuery) {
+  if (!query) {
     Notiflix.Notify.failure('Enter search data');
     return;
   }
 
   try {
-    const data = await fetchPixabay(searchQuery, page);
+    const data = await fetchPixabay(query, page);
     if (data.totalHits === 0) {
+      console.log(data.totalHits);
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
@@ -39,6 +41,7 @@ async function onSubmit(e) {
       return;
     }
     marcupArr = data.hits;
+    console.log(marcupArr);
     const markup = createMarkup(marcupArr);
     gallery.innerHTML = markup;
 
@@ -67,7 +70,7 @@ async function handleIntersection(entries, observer) {
     }
     page += 1;
     try {
-      const data = await fetchPixabay(searchQuery, page);
+      const data = await fetchPixabay(query, page);
       const newMarkupArr = data.hits;
 
       if (newMarkupArr.length > 0) {
