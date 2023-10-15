@@ -25,7 +25,7 @@ async function onSubmit(e) {
   console.log(query);
   page = 1;
 
-  if (!query) {
+  if (!query.trim()) {
     Notiflix.Notify.failure('Enter search data');
     return;
   }
